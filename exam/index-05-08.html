@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Sample</title>
+</head>
+<body>
+    <div id="app">
+        <p>{{ message }}</p>
+        <p>{{ reverseMsg1 }}</p>
+        <button v-on:click="reverseMsg">문자열 역순</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+    <script>
+        let app = new Vue({
+            data: {
+                message: 'Hello Vue.js!'
+            },
+            computed: {
+                reverseMsg1: function() {
+                    console.log("computed", );
+                    return this.message.split('').reverse().join('');
+                }
+            },
+            methods: {
+                reverseMsg: function() {
+                    console.log("methods", this.message);
+                    this.message = this.message.split('').reverse().join('');
+                    console.log("methods", this.message);
+                    return this.message;
+                }
+            },
+        }).$mount('#app');
+       
+    </script>
+</body>
+</html>
